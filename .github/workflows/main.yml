@@ -1,0 +1,36 @@
+name: Production Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to AWS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Download SonarCloud Scanner
+        uses: sonarsource/sonarcloud-github-action@v2
+        with:
+          token: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Run SonarCloud analysis
+        run: sonar-scanner
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

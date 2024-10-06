@@ -1,0 +1,17 @@
+service: auth
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+build:
+  esbuild: false
+
+functions:
+  authentication:
+    handler: src/handler/authentication.handler
+    timeout: 30
+
+plugins:
+  - serverless-plugin-typescript
