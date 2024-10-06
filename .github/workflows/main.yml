@@ -24,14 +24,9 @@ jobs:
       - name: Run tests
         run: yarn test
 
-      - name: Setup SonarCloud Scanner
+      - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v2
         with:
           token: ${{ secrets.SONAR_TOKEN }}
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
-      - name: Run SonarCloud analysis
-        run: sonar-scanner
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
