@@ -1,0 +1,24 @@
+{
+  "name": "auth-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test:local": "serverless invoke local --function authentication",
+    "test": "jest --coverage"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.145",
+    "@types/jest": "^29.5.13",
+    "jest": "^29.7.0",
+    "serverless": "^4.3.2",
+    "serverless-offline": "^13.8.0",
+    "serverless-plugin-typescript": "^2.1.5",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "aws-lambda": "^1.0.7",
+    "reflect-metadata": "^0.2.2"
+  }
+}
