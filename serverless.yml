@@ -1,9 +1,18 @@
 service: auth
 
+custom:
+  currentStage: ${opt:stage, 'dev'}
+
 provider:
   name: aws
   runtime: nodejs18.x
   region: us-east-1
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 'cognito-idp:*'
+          Resouce: '*'
 
 build:
   esbuild: false
