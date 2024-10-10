@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test:local": "serverless invoke local --function authentication",
+    "test:local": "serverless invoke local --function authentication --path __payloads/aws/api-gateway-proxy.json",
     "test": "jest --coverage"
   },
   "devDependencies": {
@@ -19,6 +19,7 @@
     "typescript": "^5.6.2"
   },
   "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "^3.669.0",
     "aws-lambda": "^1.0.7",
     "reflect-metadata": "^0.2.2"
   }
