@@ -1,5 +1,6 @@
 export type Authenticated = {
     accessToken: string
     idToken: string
-    expireIn: Number
+    refreshToken: string
+    expireIn: number
 }

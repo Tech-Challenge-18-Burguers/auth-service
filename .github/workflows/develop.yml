@@ -1,9 +1,9 @@
-name: Production Workflow
+name: Develop Workflow
 
 on:
   pull_request:
     branches:
-      - main
+      - develop
 
 jobs:
   deploy:
