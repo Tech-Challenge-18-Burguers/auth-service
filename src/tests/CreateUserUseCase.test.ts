@@ -7,7 +7,7 @@ describe('CreateUserUseCase', () => {
     it('should be create new user', async () => {
         const document = '88953017068'
         const client: CognitoIdentityProviderClient = jest.mocked(new CognitoIdentityProviderClient())
-        const configuration: IdentityProviderConfiguration = { clientId: '' }
+        const configuration: IdentityProviderConfiguration = { clientId: 'x', userPoolId: 'y' }
         const identityProvider: IdentityProviderService = jest.mocked(new CognitoIdentityProviderService(client, configuration))
         identityProvider.createUser = jest.fn().mockReturnValue({ username: document })
 
@@ -19,7 +19,7 @@ describe('CreateUserUseCase', () => {
     it('should be not create new user', async () => {
         const document = '88953017068'
         const client: CognitoIdentityProviderClient = jest.mocked(new CognitoIdentityProviderClient())
-        const configuration: IdentityProviderConfiguration = { clientId: '' }
+        const configuration: IdentityProviderConfiguration = { clientId: 'x', userPoolId: 'y' }
         const identityProvider: IdentityProviderService = jest.mocked(new CognitoIdentityProviderService(client, configuration))
         identityProvider.createUser = jest.fn().mockImplementation(() => {
             throw new Error('User Not Created')

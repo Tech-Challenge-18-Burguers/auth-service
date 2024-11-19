@@ -7,7 +7,7 @@ import { CognitoIdentityProviderClient } from "@aws-sdk/client-cognito-identity-
 describe('UserController', () => {
     it('should be authenticated first attempt', async () => {
         const client: CognitoIdentityProviderClient = jest.mocked(new CognitoIdentityProviderClient())
-        const configuration: IdentityProviderConfiguration = { clientId: '' }
+        const configuration: IdentityProviderConfiguration = { clientId: 'x', userPoolId: 'y' }
         const identityProvider = jest.mocked(new CognitoIdentityProviderService(client, configuration))
         identityProvider.authenticateWithUsername =jest.fn().mockReturnValue({
             status: AuthenticationStatus.SUCCESS, 
@@ -31,7 +31,7 @@ describe('UserController', () => {
         const documentNumber = '05782536071'
 
         const client: CognitoIdentityProviderClient = jest.mocked(new CognitoIdentityProviderClient())
-        const configuration: IdentityProviderConfiguration = { clientId: '' }
+        const configuration: IdentityProviderConfiguration = { clientId: 'x', userPoolId: 'y' }
         const identityProvider = jest.mocked(new CognitoIdentityProviderService(client, configuration))
         identityProvider.authenticateWithUsername =jest.fn()
             .mockReturnValueOnce({
@@ -61,7 +61,7 @@ describe('UserController', () => {
         const documentNumber = '05782536071'
 
         const client: CognitoIdentityProviderClient = jest.mocked(new CognitoIdentityProviderClient())
-        const configuration: IdentityProviderConfiguration = { clientId: '' }
+        const configuration: IdentityProviderConfiguration = { clientId: 'x', userPoolId: 'y' }
         const identityProvider = jest.mocked(new CognitoIdentityProviderService(client, configuration))
         identityProvider.authenticateWithUsername =jest.fn()
             .mockReturnValueOnce({
@@ -94,7 +94,7 @@ describe('UserController', () => {
         const documentNumber = '05782536071'
 
         const client: CognitoIdentityProviderClient = jest.mocked(new CognitoIdentityProviderClient())
-        const configuration: IdentityProviderConfiguration = { clientId: '' }
+        const configuration: IdentityProviderConfiguration = { clientId: 'x', userPoolId: 'y' }
         const identityProvider = jest.mocked(new CognitoIdentityProviderService(client, configuration))
         identityProvider.authenticateWithUsername =jest.fn()
             .mockReturnValueOnce({

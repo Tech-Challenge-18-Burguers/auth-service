@@ -21,6 +21,9 @@ functions:
   authentication:
     handler: src/handler/authentication.handler
     timeout: 30
+    environment:
+      COGNITO_USER_POOL_ID: ${param:COGNITO_USER_POOL_ID}
+      COGNITO_CLIENT_ID: ${param:COGNITO_CLIENT_ID}
 
 plugins:
   - serverless-plugin-typescript
