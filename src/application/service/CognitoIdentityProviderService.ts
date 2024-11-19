@@ -59,21 +59,13 @@ export default class CognitoIdentityProviderService implements IdentityProviderS
                 { Name: "email_verified", Value: "true" }
             ],
             MessageAction: 'SUPPRESS'
-         })
-
-        // const command = new SignUpCommand({
-        //     ClientId: this.configuration.clientId,
-        
-        //     Username: usernameAndPassword.username,
-        //     Password: usernameAndPassword.password,
-        //     UserAttributes: [{ Name: 'name', Value: usernameAndPassword.username }]
-        // })
+        })
 
         const response = await this.client.send(command)
         console.log('Response', response)
         if(response.$metadata.httpStatusCode !== 200) {
             console.error(`Error on create new user: ${response.$metadata.httpStatusCode}`)
-            throw new Error(`User not Created`)
+            throw new Error(`User not created`)
         }
 
         await this.confirmUser(usernameAndPassword.username, usernameAndPassword.password)

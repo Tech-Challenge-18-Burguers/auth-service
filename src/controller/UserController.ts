@@ -22,6 +22,7 @@ export default class UserController {
                 return authenticated
             }
             
+            throw new Error('Unauthorized')
         } catch (error: any) {
             console.error(error.message, error)
             console.log('create new user with document')
@@ -36,13 +37,11 @@ export default class UserController {
                 }
             }
 
-            console.log('thirth attempt')
-            const authenticatedEmpty = await loginWithDocument.execute(this.DEFAULT_DOCUMENT)
-            if(!authenticatedEmpty) throw new Error('Unauthorized')
-            return authenticatedEmpty
         }
-
-        throw new Error('Unexpected Error')
-
+        
+        console.log('thirth attempt')
+        const authenticatedEmpty = await loginWithDocument.execute(this.DEFAULT_DOCUMENT)
+        if(!authenticatedEmpty) throw new Error('Unauthorized')
+        return authenticatedEmpty
     }
 }

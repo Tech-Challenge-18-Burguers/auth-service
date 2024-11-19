@@ -79,10 +79,6 @@ describe('UserController', () => {
                     expireIn: 300
                 }
             })
-        
-        identityProvider.createUser = jest.fn().mockReturnValue({
-            username: documentNumber
-        })
 
         const controller = new UserController(identityProvider)
         const response = controller.authenticate(documentNumber)

@@ -27,6 +27,20 @@ describe('CognitoIdentityProviderService', () => {
         const response = service.createUser({ username, password: username })
         expect(response).rejects.toThrow('User not created')
     })
+    
+    it('should be not confirm user', async () => {
+        const configuration: IdentityProviderConfiguration = { clientId: 'x', userPoolId: 'y' }
+        const client = jest.mocked(new CognitoIdentityProviderClient())
+        client.send = jest.fn()
+                            .mockReturnValueOnce({ $metadata: { httpStatusCode: 200 } })
+                            .mockReturnValue({ $metadata: { httpStatusCode: 400 } })
+
+        const username = '26534306069'
+
+        const service = new CognitoIdentityProviderService(client, configuration)
+        const response = service.createUser({ username, password: username })
+        expect(response).rejects.toThrow('User not Confirmed')
+    })
 
     it('should be login successfully', async () => {
         const configuration: IdentityProviderConfiguration = { clientId: 'x', userPoolId: 'y' }
