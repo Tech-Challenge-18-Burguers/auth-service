@@ -7,7 +7,7 @@ import { randomUUID } from 'node:crypto'
 describe('LoginWithDocumentUseCase', () => {
     it('should be authenticated with success', async () => {
         const client: CognitoIdentityProviderClient = jest.mocked(new CognitoIdentityProviderClient())
-        const configuration: IdentityProviderConfiguration = { clientId: '' }
+        const configuration: IdentityProviderConfiguration = { clientId: 'x', userPoolId: 'y' }
         const identityProvider = jest.mocked(new CognitoIdentityProviderService(client, configuration))
         identityProvider.authenticateWithUsername = jest.fn().mockReturnValue({
             status: AuthenticationStatus.SUCCESS, 
@@ -26,7 +26,7 @@ describe('LoginWithDocumentUseCase', () => {
 
     it('should be not authenticated', async () => {
         const client: CognitoIdentityProviderClient = jest.mocked(new CognitoIdentityProviderClient())
-        const configuration: IdentityProviderConfiguration = { clientId: '' }
+        const configuration: IdentityProviderConfiguration = { clientId: 'x', userPoolId: 'y' }
         const identityProvider = jest.mocked(new CognitoIdentityProviderService(client, configuration))
         identityProvider.authenticateWithUsername = jest.fn().mockReturnValue({
             status: AuthenticationStatus.FAILURE, 
