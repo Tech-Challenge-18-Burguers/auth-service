@@ -1,7 +1,7 @@
 name: Production Workflow
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
@@ -33,11 +33,10 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
-          PR_ID: ${{ github.event.pull_request.number }}
         run: |
           echo "Waiting for SonarQube analysis to complete..."
           sleep 20
-          result=$(curl -u "$SONAR_TOKEN": "https://sonarcloud.io/api/qualitygates/project_status?projectKey=$SONAR_PROJECT_KEY&&pullRequest=$PR_ID")
+          result=$(curl -u "$SONAR_TOKEN": "https://sonarcloud.io/api/qualitygates/project_status?projectKey=$SONAR_PROJECT_KEY")
           status=$(echo "$result" | jq -r '.projectStatus.status')
 
           echo "SonarQube Quality Gate status: $status"
