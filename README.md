@@ -14,7 +14,6 @@ O objetivo principal do **18Burguers** é fornecer um sistema de autoatendimento
 
 - **Java**
 - **Spring Boot**
-- **PostgreSQL**
 - **Docker**
 - **AWS**
 - **Terraform**
@@ -33,11 +32,11 @@ O objetivo principal do **18Burguers** é fornecer um sistema de autoatendimento
 
 O sistema utiliza arquitetura de **microserviços**, promovendo a separação de responsabilidades e facilitando a manutenção e escalabilidade.
 
-![Diagrama da Arquitetura]<img src="./images/arquitetura.png">
+<img src="./images/arquitetura.png">
 
 ## Estrutura de Pastas
 
-![Estrutura de Pastas]<img src="./images/estruturaPastas.png">
+<img src="./images/estruturaPastas.png">
 
 ---
 
