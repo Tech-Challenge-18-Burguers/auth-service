@@ -1,9 +1,18 @@
 service: auth
 
+custom:
+  currentStage: ${opt:stage, 'dev'}
+
 provider:
   name: aws
   runtime: nodejs18.x
   region: us-east-1
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 'cognito-idp:*'
+          Resouce: '*'
 
 build:
   esbuild: false
@@ -12,6 +21,9 @@ functions:
   authentication:
     handler: src/handler/authentication.handler
     timeout: 30
+    environment:
+      COGNITO_USER_POOL_ID: ${param:COGNITO_USER_POOL_ID}
+      COGNITO_CLIENT_ID: ${param:COGNITO_CLIENT_ID}
 
 plugins:
   - serverless-plugin-typescript
